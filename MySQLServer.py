@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
-import mysql.connector
-from mysql.connector import Error
+
+try:
+    import mysql.connector
+    from mysql.connector import Error
+except ImportError as e:
+    print("Error: mysql-connector-python module is not installed.")
+    print("You can install it using: pip install mysql-connector-python")
+    exit(1)
 
 def create_database():
     try:
-        # Connect to MySQL server (adjust user/password if needed)
+        # Connect to MySQL server (adjust credentials as needed)
         connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='your_password_here'  # <-- Replace with your MySQL password
+            password='your_password_here'  # <-- Replace this with your actual MySQL password
         )
 
         if connection.is_connected():
@@ -20,7 +26,7 @@ def create_database():
         print(f"Error while connecting to MySQL: {e}")
 
     finally:
-        # Close the cursor and connection if they exist
+        # Ensure cleanup of DB resources
         if 'cursor' in locals():
             cursor.close()
         if 'connection' in locals() and connection.is_connected():
@@ -28,4 +34,3 @@ def create_database():
 
 if __name__ == "__main__":
     create_database()
-    print("MySQL connection is closed.")
