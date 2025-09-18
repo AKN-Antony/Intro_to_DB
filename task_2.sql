@@ -46,3 +46,25 @@ CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
     FOREIGN KEY (ORDER_ID) REFERENCES ORDERS(ID),
     FOREIGN KEY (BOOK_ID) REFERENCES BOOKS(ID)
 );
+
+-- ----------------------------
+-- CHECKS FOR IMPLEMENTATION
+-- ----------------------------
+
+-- Check for creation of all tables
+SHOW TABLES;
+
+-- Check structure of AUTHORS table
+DESCRIBE AUTHORS;
+
+-- Check structure of BOOKS table
+DESCRIBE BOOKS;
+
+-- Check structure of CUSTOMERS table
+DESCRIBE CUSTOMERS;
+
+-- Check structure of ORDERS table
+DESCRIBE ORDERS;
+
+-- Check structure of ORDER_DETAILS table
+DESCRIBE ORDER_DETAILS;
